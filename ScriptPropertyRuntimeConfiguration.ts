@@ -1,6 +1,4 @@
-import { RuntimeConfiguration } from "./RuntimeConfiguration";
-
-export class ScriptPropertyRuntimeConfiguration<TConfigSchema> implements RuntimeConfiguration<TConfigSchema> {
+class ScriptPropertyRuntimeConfiguration<TConfigSchema> implements RuntimeConfiguration<TConfigSchema> {
     properties: TConfigSchema;
 
     public static createByPropertyKey<TConfigSchema>(key: string): ScriptPropertyRuntimeConfiguration<TConfigSchema> {

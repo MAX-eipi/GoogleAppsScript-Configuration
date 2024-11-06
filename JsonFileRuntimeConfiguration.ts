@@ -1,12 +1,12 @@
-import { RuntimeConfiguration } from "./RuntimeConfiguration";
-
-export class JsonFileRuntimeConfiguration<TConfigSchema> implements RuntimeConfiguration<TConfigSchema> {
-    properties: TConfigSchema;
-
+class JsonFileRuntimeConfiguration<TConfigSchema> implements RuntimeConfiguration<TConfigSchema> {
     public static createByFileId<TConfigSchema>(fileId: string): JsonFileRuntimeConfiguration<TConfigSchema> {
         const file = DriveApp.getFileById(fileId);
         return new JsonFileRuntimeConfiguration<TConfigSchema>(file);
     }
+
+    private _properties: TConfigSchema;
+    public get properties(): TConfigSchema { return this._properties; }
+    private set properties(value: TConfigSchema) { this._properties = value; }
 
     public constructor(private readonly _jsonFile: GoogleAppsScript.Drive.File) {
         const json = _jsonFile.getBlob().getDataAsString();

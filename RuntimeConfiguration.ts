@@ -1,4 +1,4 @@
-export interface RuntimeConfiguration<TConfigSchem> {
+interface RuntimeConfiguration<TConfigSchem> {
     readonly properties: TConfigSchem;
     hasProperty(key: string): boolean;
     getProperty<T>(key: string, defaultValue: T): T;
